@@ -7,37 +7,38 @@ import org.xml.sax.SAXException;
 public class LibrosSAXhandler extends DefaultHandler {
     private int contadorLibros = 0;
     private boolean dentroDeLibro = false;
+    private String etiquetaActual = "";
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
+        etiquetaActual = qName;
         switch (qName) {
-            case "Libro" -> {
+            case "book" -> {
                 dentroDeLibro = true;
                 contadorLibros++;
                 System.out.println("Libro nº " + contadorLibros);
-                System.out.println("Publicado en: " + atts.getValue(atts.getQName(0)));
             }
-            case "Titulo" -> System.out.print("\nEl título es: ");
-            case "Autor" -> System.out.print("\nEl autor es: ");
             default -> {
+                System.out.print("\n" + etiquetaActual + ": ");
             }
         }
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        if (qName.equals("Libro")) {
+        if (qName.equals("book")) {
             dentroDeLibro = false;
             System.out.println("\n-----------------------");
         }
+        etiquetaActual = "";
     }
 
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
-        String car = new String(ch, start, length);
+        String car = new String(ch, start, length).trim();
         car = car.replaceAll("\t", ""); // quita todos los tabuladores
         car = car.replaceAll("\n", "");
-        if (dentroDeLibro) {
+        if (!car.isEmpty() && dentroDeLibro) {
             System.out.print(car);
         }
     }
