@@ -4,7 +4,7 @@ import java.io.File;
 
 public class UsaAccesoXMLSAX {
     public static void main(String[] args) {
-        File f = new File("Libros.xml");
+        File f = new File("Books.xml");
         AccesoXMLSAX a = new AccesoXMLSAX();
         try {
             a.parsearXMLconLibrosSAXhandler(f);
@@ -12,8 +12,3 @@ public class UsaAccesoXMLSAX {
         }
     }
 }
-
-
-
-
-
