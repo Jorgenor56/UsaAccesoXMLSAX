@@ -1,4 +1,3 @@
-
 package practica.pkg1.pkg5.ad;
 
 import javax.xml.parsers.SAXParser;
@@ -18,7 +17,14 @@ public class AccesoXMLSAX {
             LibrosSAXhandler sh = new LibrosSAXhandler();
             parser.parse(f, sh);
             return 0;
-        } catch (IOException | ParserConfigurationException | SAXException e) {
+        } catch (IOException e) {
+            System.err.println("Error de E/S: " + e.getMessage());
+            return -1;
+        } catch (ParserConfigurationException e) {
+            System.err.println("Error de configuración del parser: " + e.getMessage());
+            return -1;
+        } catch (SAXException e) {
+            System.err.println("Error SAX: " + e.getMessage());
             return -1;
         }
     }
