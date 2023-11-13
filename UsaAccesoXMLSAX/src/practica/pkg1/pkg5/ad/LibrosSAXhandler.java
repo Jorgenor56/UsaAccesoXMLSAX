@@ -10,15 +10,17 @@ public class LibrosSAXhandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
-        if (qName.equals("Libro")) {
-            dentroDeLibro = true;
-            contadorLibros++;
-            System.out.println("Libro nº " + contadorLibros);
-            System.out.println("Publicado en: " + atts.getValue(atts.getQName(0)));
-        } else if (qName.equals("Titulo")) {
-            System.out.print("\nEl título es: ");
-        } else if (qName.equals("Autor")) {
-            System.out.print("\nEl autor es: ");
+        switch (qName) {
+            case "Libro" -> {
+                dentroDeLibro = true;
+                contadorLibros++;
+                System.out.println("Libro nº " + contadorLibros);
+                System.out.println("Publicado en: " + atts.getValue(atts.getQName(0)));
+            }
+            case "Titulo" -> System.out.print("\nEl título es: ");
+            case "Autor" -> System.out.print("\nEl autor es: ");
+            default -> {
+            }
         }
     }
 
@@ -40,5 +42,6 @@ public class LibrosSAXhandler extends DefaultHandler {
         }
     }
 }
+
 
 
