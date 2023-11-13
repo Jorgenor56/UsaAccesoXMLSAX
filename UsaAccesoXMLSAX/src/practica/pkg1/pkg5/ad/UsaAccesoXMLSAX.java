@@ -1,4 +1,3 @@
-
 package practica.pkg1.pkg5.ad;
 
 import java.io.File;
@@ -10,7 +9,6 @@ public class UsaAccesoXMLSAX {
         try {
             a.parsearXMLconLibrosSAXhandler(f);
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }
