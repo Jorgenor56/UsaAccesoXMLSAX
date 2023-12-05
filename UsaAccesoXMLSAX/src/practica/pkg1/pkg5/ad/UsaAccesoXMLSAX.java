@@ -1,14 +1,20 @@
+
 package practica.pkg1.pkg5.ad;
 
 import java.io.File;
-
-public class UsaAccesoXMLSAX {
+//Declaro la clase pública UsaAccesoXMLSAX
+public class UsaAccesoXMLSAX { 
     public static void main(String[] args) {
-        File f = new File("Books.xml");
-        AccesoXMLSAX a = new AccesoXMLSAX();
+        //Creo un objeto File para el archivo XML llamado "Books.xml"
+        File f = new File("Books.xml"); 
+        //Creo una instancia de la clase AccesoXMLSAX
+        AccesoXMLSAX a = new AccesoXMLSAX(); 
+
         try {
-            a.parsearXMLconLibrosSAXhandler(f);
+            //Parseo el archivo XML usando el método parsearXMLconLibrosSAXhandler
+            a.parsearXMLconLibrosSAXhandler(f); 
         } catch (Exception e) {
+            //Excepcion que no hace nada
         }
     }
 }
